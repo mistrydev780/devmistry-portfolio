@@ -168,10 +168,20 @@ const AntigravityInner = ({
   );
 };
 
-const Antigravity = props => {
+const Antigravity = ({ count = 300, ...props }) => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+
   return (
-    <Canvas camera={{ position: [0, 0, 50], fov: 35 }}>
-      <AntigravityInner {...props} />
+    <Canvas
+      camera={{ position: [0, 0, 50], fov: 35 }}
+      dpr={[1, 1.5]}
+      // Listen on the whole app so the particles react to the cursor above page sections
+      eventSource={document.getElementById('root')}
+      eventPrefix="client"
+      frameloop={reduceMotion ? 'demand' : 'always'}
+    >
+      <AntigravityInner {...props} count={isSmallScreen ? Math.round(count / 2) : count} />
     </Canvas>
   );
 };

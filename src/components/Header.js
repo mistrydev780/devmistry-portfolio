@@ -1,33 +1,64 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
+import { navLinks, profile } from '../data/portfolio';
+import ThemeToggle from './ThemeToggle';
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('#home');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Highlight the nav link for the section currently in view
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.querySelector(link.href))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen((open) => !open);
   };
 
-  // Close mobile menu when clicking outside
+  // Close mobile menu when clicking outside or pressing Escape
   useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
     const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && !event.target.closest('.nav') && !event.target.closest('.hamburger')) {
+      if (!event.target.closest('.nav') && !event.target.closest('.hamburger')) {
         setIsMobileMenuOpen(false);
       }
     };
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setIsMobileMenuOpen(false);
+    };
 
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isMobileMenuOpen]);
 
   // Prevent body scroll when mobile menu is open
@@ -46,25 +77,44 @@ function Header() {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-content">
         <div className="logo">
-          <a href="#home">Portfolio</a>
+          <a href="#home" aria-label={`${profile.name}, back to top`}>
+            {profile.name}
+          </a>
         </div>
-        
-        <nav className={`nav ${isMobileMenuOpen ? 'mobile-active' : ''}`}>
-          <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-          <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About</a>
-          <a href="#tech-skills" onClick={() => setIsMobileMenuOpen(false)}>Skills</a>
-          <a href="#experience" onClick={() => setIsMobileMenuOpen(false)}>Experience</a>
-          <a href="#projects" onClick={() => setIsMobileMenuOpen(false)}>Projects</a>
-          <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
+
+        <nav
+          id="primary-navigation"
+          className={`nav ${isMobileMenuOpen ? 'mobile-active' : ''}`}
+          aria-label="Primary"
+        >
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={activeSection === link.href ? 'active' : undefined}
+              aria-current={activeSection === link.href ? 'true' : undefined}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
 
-        <div 
-          className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`} 
-          onClick={toggleMobileMenu}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="header-actions">
+          <ThemeToggle />
+
+          <button
+            type="button"
+            className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="primary-navigation"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </header>

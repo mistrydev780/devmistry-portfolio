@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Dev Mistry — Resume</title>
+<!-- Source for public/resume/Dev-Mistry-Resume.pdf. Regenerate with: npm run resume -->
+<style>
+  @page { size: A4; margin: 12mm 15mm 11mm 15mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1f4e79;
+    --ink: #1a1a1a;
+    --text: #262626;
+    --muted: #595959;
+    --rule: #a6a6a6;
+    --link: #0b57d0;
+    --green: #1e7b45;
+  }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
+    font-size: 10.2pt;
+    line-height: 1.28;
+    color: var(--text);
+    width: 180mm;
+    margin: 0 auto;
+  }
+  a { color: var(--link); text-decoration: underline; text-underline-offset: 1.5px; }
+
+  /* ---------- Header ---------- */
+  header { padding-bottom: 8px; border-bottom: 2px solid var(--navy); }
+  h1 { font-size: 24pt; font-weight: 700; letter-spacing: 1px; color: var(--navy); line-height: 1.1; }
+  .title { margin-top: 4px; font-size: 11.5pt; color: var(--muted); }
+  .title .sep { margin: 0 7px; }
+  .contact { margin-top: 4px; font-size: 9.8pt; color: var(--muted); white-space: nowrap; }
+  .contact .dot { margin: 0 6px; }
+  .contact a { color: var(--muted); }
+  .contact svg {
+    width: 9px; height: 9px; margin-right: 2px; vertical-align: -0.5px;
+    stroke: var(--muted); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  /* ---------- Sections ---------- */
+  section { margin-top: 9px; }
+  h2 {
+    font-size: 10.8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding-bottom: 2px;
+    margin-bottom: 7px;
+    border-bottom: 1px solid var(--rule);
+    break-after: avoid;
+  }
+  .summary { text-align: justify; }
+  .skills p { margin: 1.5px 0; }
+  .skills strong { color: var(--ink); }
+
+  .entry { margin-bottom: 7px; }
+  .entry:last-child { margin-bottom: 0; }
+  .keep { break-inside: avoid; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .role strong { color: var(--ink); font-size: 10.6pt; }
+  .current {
+    margin-left: 7px;
+    padding: 0 6px;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--green);
+    border: 1px solid var(--green);
+    border-radius: 3px;
+    vertical-align: 1px;
+  }
+  .company { color: var(--muted); }
+  .company strong { color: var(--navy); font-weight: 700; }
+  .job-skills { margin-top: 2px; font-size: 9.6pt; color: var(--muted); }
+  .job-skills strong { color: var(--ink); }
+  .date { font-style: italic; color: var(--muted); white-space: nowrap; }
+  .project-title { font-weight: 700; color: var(--ink); break-after: avoid; }
+  .project-title.featured { font-size: 11pt; color: var(--navy); }
+  .stack { color: var(--muted); break-after: avoid; }
+  .links { break-after: avoid; }
+  .links .dot { margin: 0 6px; color: var(--muted); }
+
+  ul { margin-top: 2px; padding-left: 17px; }
+  li { margin: 1px 0; padding-left: 2px; }
+
+  .degree { font-weight: 700; color: var(--navy); }
+  .uni { color: var(--muted); }
+  .grade { color: var(--green); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>DEV MISTRY</h1>
+  <p class="title">Full Stack Web &amp; App Developer<span class="sep">|</span>AI/ML · LLM &amp; AI Agent Developer</p>
+  <p class="contact">
+    Bardoli, Gujarat<span class="dot">•</span>+91 9408836030<span class="dot">•</span><a href="mailto:devjangid788@gmail.com">devjangid788@gmail.com</a><span class="dot">•</span><a href="https://github.com/mistrydev780"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>GitHub Profile</a><span class="dot">•</span><a href="https://www.linkedin.com/in/mistrydev780"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>LinkedIn Profile</a><span class="dot">•</span><a href="https://devmistry780.vercel.app"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>Portfolio</a>
+  </p>
+</header>
+
+<section>
+  <h2>Professional Summary</h2>
+  <p class="summary">
+    Full Stack Web &amp; App Developer at Tupple Apps with hands-on experience building AI-powered SaaS platforms,
+    enterprise management systems and e-commerce applications using React.js, Next.js, Node.js, Express.js, PostgreSQL
+    and MongoDB. Developed production-ready applications including an AI Interview Preparation Platform, an AI Customer
+    Support SaaS and an AI-powered E-Commerce Platform with Razorpay. Strong expertise in REST APIs, JWT Authentication,
+    RBAC, LLM integration (OpenAI, Gemini, OpenRouter, Claude), AI agents, n8n automation and cloud deployment.
+  </p>
+</section>
+
+<section class="skills">
+  <h2>Technical Skills</h2>
+  <p><strong>Languages:</strong> JavaScript (ES6+), TypeScript, Python, SQL, HTML5, CSS3 (Familiar: Java, C, C++)</p>
+  <p><strong>Frontend &amp; Mobile:</strong> React.js, Next.js, React Native, Expo, Redux Toolkit, Context API, Tailwind CSS, SASS, Bootstrap, Framer Motion</p>
+  <p><strong>Backend:</strong> Node.js, Express.js, NestJS, Flask, REST APIs, JWT Authentication, Multer, Middleware Development</p>
+  <p><strong>Database:</strong> MongoDB, Mongoose, PostgreSQL, MySQL, Firebase, Redis, Prisma, TypeORM</p>
+  <p><strong>AI &amp; Generative AI:</strong> OpenAI API, Google Gemini API, Anthropic Claude, Groq, OpenRouter, Prompt Engineering, LLM Integration, RAG, Vector Search (Qdrant), LangChain</p>
+  <p><strong>AI Agents &amp; Automation:</strong> AI Agents, Claude Code, n8n, Multi-step AI Workflows, Gmail, Google Sheets &amp; Telegram Integrations</p>
+  <p><strong>Payment Gateway:</strong> Razorpay</p>
+  <p><strong>Deployment &amp; Tools:</strong> Vercel, Render, Firebase, MongoDB Atlas, Docker, AWS, GitHub Actions, Git, GitHub, Postman, Selenium, VS Code</p>
+  <p><strong>Computer Science:</strong> Data Structures &amp; Algorithms, OOP, DBMS, SDLC</p>
+  <p><strong>Additional:</strong> SaaS Architecture, Role-Based Access Control (RBAC), Razorpay Integration, REST API Development, Cloud Deployment</p>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+  <div class="entry keep">
+    <div class="row">
+      <p class="role"><strong>Full Stack Developer</strong><span class="current">Current</span></p>
+      <p class="date">Aug 2026 – Present</p>
+    </div>
+    <p class="company"><strong>Tupple Apps</strong> — Surat, Gujarat, India</p>
+    <ul>
+      <li>Full Stack Developer working with React.js, Next.js, Node.js, Express.js, PostgreSQL and MongoDB.</li>
+      <li>Building responsive web applications and REST APIs with end-to-end database integration.</li>
+      <li>Delivering scalable software solutions using Git and GitHub version control workflows.</li>
+    </ul>
+    <p class="job-skills"><strong>Skills:</strong> React.js · Next.js · Node.js · Express.js · PostgreSQL · MongoDB · REST APIs · Git · GitHub</p>
+  </div>
+  <div class="entry keep">
+    <div class="row">
+      <p class="role"><strong>Full Stack Developer</strong></p>
+      <p class="date">Nov 2025 – Apr 2026</p>
+    </div>
+    <p class="company"><strong>UpGrowth Infotech</strong> — Bardoli, Gujarat, India · Part-time · On-site</p>
+    <ul>
+      <li>Developed responsive full-stack web applications using React.js, Node.js, Express.js and MongoDB.</li>
+      <li>Built REST APIs and implemented authentication using JWT.</li>
+      <li>Worked on database design, CRUD operations and API integrations.</li>
+      <li>Collaborated on real-world projects following industry best practices.</li>
+      <li>Improved application performance and user experience through optimised frontend and backend development.</li>
+    </ul>
+    <p class="job-skills"><strong>Skills:</strong> React.js · Node.js · Express.js · MongoDB · JWT · REST APIs · Git · GitHub</p>
+  </div>
+</section>
+
+<section>
+  <h2>Featured Project</h2>
+  <div class="entry">
+    <p class="project-title featured">AI InterviewIQ – AI Interview Preparation Platform</p>
+    <p class="stack">React.js • Redux Toolkit • Node.js • Express.js • MongoDB • OpenAI • Gemini • OpenRouter</p>
+    <p class="links"><a href="https://github.com/mistrydev780/Ai-Interview-Preparation-Platform">GitHub Repository</a><span class="dot">•</span><a href="https://ai2interviewiq-client.onrender.com/">Live Demo</a></p>
+    <ul>
+      <li>AI-powered mock interview platform simulating real technical interviews for students and developers.</li>
+      <li>Implemented resume upload (Multer) and AI resume analysis to personalise every interview session.</li>
+      <li>Integrated LLMs via OpenAI, Gemini and OpenRouter APIs to generate role-based interview questions.</li>
+      <li>Built AI answer evaluation with an interview scoring system and personalised feedback.</li>
+      <li>Developed user dashboards for interview history, resume analysis reports and performance tracking.</li>
+      <li>Implemented JWT Authentication with protected routes and user profile management.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Other Projects</h2>
+
+  <div class="entry">
+    <p class="project-title">AI MERN E-Commerce Platform</p>
+    <p class="stack">React.js • Redux Toolkit • Node.js • Express.js • MongoDB • Firebase • Razorpay</p>
+    <p class="links"><a href="https://github.com/mistrydev780/Ai-MERN-Dev-E-Commerce-Master">GitHub Repository</a></p>
+    <ul>
+      <li>Developed a full-stack AI-powered e-commerce application with product, cart, wishlist and order management.</li>
+      <li>Integrated the Razorpay payment gateway for secure online transactions and order workflows.</li>
+      <li>Implemented secure authentication and role-based access control for customers and administrators.</li>
+      <li>Built an admin dashboard for products, users, orders, inventory and sales analytics.</li>
+      <li>Added AI product recommendations, an AI shopping assistant and smart product search.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <p class="project-title">AI Customer Support SaaS – AI Chatbot Platform</p>
+    <p class="stack">Next.js • TypeScript • Tailwind CSS • Node.js • Express.js • MongoDB • ScaleKit • OpenAI • Gemini</p>
+    <p class="links"><a href="https://github.com/mistrydev780/AI-Customer-Support-SaaS-Platform">GitHub Repository</a><span class="dot">•</span><a href="https://ai-customer-support-saa-s-platform.vercel.app/">Live Demo</a></p>
+    <ul>
+      <li>Built a SaaS platform that lets businesses create, customise and embed AI support chatbots on their websites.</li>
+      <li>Implemented live chatbot preview, context-aware AI responses and AI prompt management.</li>
+      <li>Developed a SaaS dashboard with analytics, user management and usage monitoring.</li>
+      <li>Secured the platform with ScaleKit Authentication and a JWT token system.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <p class="project-title">TaskFlow – Employee Task Management Platform</p>
+    <p class="stack">React.js • Tailwind CSS • Node.js • Express.js • MongoDB • JWT Authentication</p>
+    <p class="links"><a href="https://github.com/mistrydev780/TaskFlow-Management-Platform">GitHub Repository</a><span class="dot">•</span><a href="https://employee-task-management-system-1-jolj.onrender.com/">Live Demo</a></p>
+    <ul>
+      <li>Developed a task management platform with task assignment workflows, status updates and deadline tracking.</li>
+      <li>Built role-based employee and admin dashboards with productivity monitoring and analytics.</li>
+      <li>Implemented secure JWT authentication and authorisation for protected routes.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <p class="project-title">Employee Management System</p>
+    <p class="stack">React.js • Tailwind CSS • Node.js • Express.js • MongoDB • JWT Authentication</p>
+    <p class="links"><a href="https://github.com/mistrydev780/Employee-Management-System-Master">GitHub Repository</a><span class="dot">•</span><a href="https://employee-management-system-2-u26t.onrender.com">Live Demo</a></p>
+    <ul>
+      <li>Built a workforce management platform with employee CRUD, task assignment and performance analytics.</li>
+      <li>Designed REST APIs with optimised MongoDB queries and role-based dashboards for admins and employees.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <p class="project-title">DevNova AI – AI Voice Agent</p>
+    <p class="stack">React.js • Vite • Tailwind CSS • Firebase • Node.js • Express.js • MongoDB • JWT</p>
+    <p class="links"><a href="https://github.com/mistrydev780/DevNova-AI">GitHub Repository</a></p>
+    <ul>
+      <li>AI voice agent application in active development with a React and Vite frontend and Firebase integration.</li>
+      <li>Built an Express and MongoDB backend secured with JWT cookie-based authentication.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="entry keep">
+    <div class="row">
+      <p class="degree">Master of Computer Applications (MCA)</p>
+      <p class="date">2026 – 2028</p>
+    </div>
+    <p>Vidyabharti Trust College of MCA · Pursuing</p>
+    <p class="uni">Gujarat Technological University (GTU)</p>
+  </div>
+  <div class="entry keep">
+    <div class="row">
+      <p class="degree">Bachelor of Computer Applications (BCA)</p>
+      <p class="date">2023 – 2026</p>
+    </div>
+    <p>Vidyabharti Trust College of Business, Computer Science and Research, Umrakh</p>
+    <p class="uni">Veer Narmad South Gujarat University (VNSGU)</p>
+    <p class="grade">CGPA: 7.77 / 10 | Final SGPA: 8.18 | Percentage: 77.70%</p>
+    <p class="grade">First Class with Distinction</p>
+  </div>
+</section>
+
+<section class="keep">
+  <h2>Training &amp; Certifications</h2>
+  <ul>
+    <li><strong>Full Stack Web Development Training</strong> — Byte Touching Classes: built real-world projects with React.js, Node.js, Express.js, MongoDB and REST APIs.</li>
+    <li><strong>Internship Completion Certificate</strong> — UpGrowth Infotech (Nov 2025 – Jan 2026).</li>
+  </ul>
+</section>
+
+<section class="keep">
+  <h2>Achievements</h2>
+  <ul>
+    <li>Built and deployed 5+ production-ready MERN and AI-powered applications.</li>
+    <li>Developed an AI-powered E-Commerce Platform with Razorpay payment integration.</li>
+    <li>Integrated Generative AI (OpenAI, OpenRouter, Gemini) into real-world SaaS applications.</li>
+    <li>Deployed production applications using Vercel, Render, Firebase and MongoDB Atlas.</li>
+  </ul>
+</section>
+
+</body>
+</html>

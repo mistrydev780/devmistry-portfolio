@@ -1,7 +1,7 @@
 .contact {
   background-color: transparent;
   position: relative;
-  padding: 80px 0;
+  padding: 80px 20px;
 }
 
 .contact h2 {
@@ -243,10 +243,10 @@
   border-radius: 10px;
   text-align: center;
   font-weight: 500;
-  animation: slideIn 0.3s ease-out;
+  animation: message-slide-in 0.3s ease-out;
 }
 
-@keyframes slideIn {
+@keyframes message-slide-in {
   from {
     opacity: 0;
     transform: translateY(-10px);
@@ -276,7 +276,7 @@
 
 @media (max-width: 480px) {
   .contact {
-    padding: 60px 0;
+    padding: 60px 15px;
   }
 
   .contact h2 {
@@ -307,5 +307,50 @@
 
   .contact-form .btn {
     width: 100%;
+  }
+}
+/* Labels, error state, two-column row and honeypot */
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--text-primary);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-item p a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  word-break: break-all;
+}
+
+.contact-item p a:hover {
+  color: var(--primary-color);
+}
+
+.submit-message.error {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }

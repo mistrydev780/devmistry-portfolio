@@ -89,7 +89,7 @@
   font-size: 1.2rem;
   color: var(--primary-color);
   font-weight: bold;
-  animation: pulse 2s ease-in-out infinite;
+  animation: footer-pulse 2s ease-in-out infinite;
 }
 
 .footer-tagline span:last-child {
@@ -324,7 +324,7 @@
   }
 }
 
-@keyframes pulse {
+@keyframes footer-pulse {
   0%, 100% {
     opacity: 1;
     transform: scale(1);
@@ -436,4 +436,29 @@
     width: 18px;
     height: 18px;
   }
+}
+.footer-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.footer-location svg {
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.footer-cta {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-cta:hover {
+  color: var(--secondary-color);
+  transform: translateX(4px);
 }

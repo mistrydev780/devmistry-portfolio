@@ -1,0 +1,302 @@
+/*
+ * Light theme overrides. The palette variables live in App.css; this file only
+ * covers colours that components hard-code for the dark theme. Imported last in App.js.
+ */
+
+/* ---------- Shared ---------- */
+[data-theme='light'] .theme-transition .theme-toggle-icon,
+.theme-transition .theme-toggle-icon {
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+[data-theme='light'] .antigravity-background {
+  opacity: 0.22;
+}
+
+/* White brand logos (Next.js, GitHub, OpenAI...) flip to dark; coloured parts keep their hue */
+[data-theme='light'] .logo-mono {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+[data-theme='light'] .skill-image.logo-mono {
+  filter: invert(1) hue-rotate(180deg) drop-shadow(0 2px 8px rgba(99, 102, 241, 0.2));
+}
+
+/* ---------- Header ---------- */
+[data-theme='light'] .header {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 250, 252, 0.85) 100%);
+  border-bottom-color: rgba(79, 70, 229, 0.12);
+}
+
+[data-theme='light'] .header.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08), 0 0 60px rgba(79, 70, 229, 0.06);
+  border-bottom-color: rgba(79, 70, 229, 0.15);
+}
+
+[data-theme='light'] .theme-toggle {
+  color: var(--primary-color);
+  background: rgba(79, 70, 229, 0.08);
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+[data-theme='light'] .theme-toggle:hover {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  [data-theme='light'] .nav {
+    background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+    box-shadow: -10px 0 40px rgba(15, 23, 42, 0.15);
+  }
+
+  [data-theme='light'] .nav.mobile-active::after {
+    background: rgba(15, 23, 42, 0.3);
+  }
+}
+
+/* ---------- Hero ---------- */
+[data-theme='light'] .role-text {
+  background: linear-gradient(90deg, #1e1b4b 0%, #4f46e5 55%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-theme='light'] .role-pen {
+  background: linear-gradient(180deg, #a5b4fc, var(--secondary-color));
+}
+
+[data-theme='light'] .hero-focus li {
+  color: #4338ca;
+  background: rgba(79, 70, 229, 0.08);
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+[data-theme='light'] .hero-monogram {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(124, 58, 237, 0.18), transparent 60%),
+    linear-gradient(145deg, #e0e7ff 0%, #f8fafc 100%);
+  box-shadow: inset 0 0 60px rgba(79, 70, 229, 0.15), 0 25px 50px rgba(79, 70, 229, 0.25);
+}
+
+[data-theme='light'] .hero-monogram span {
+  background: linear-gradient(135deg, #312e81, var(--primary-color), #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-theme='light'] .portrait-frame {
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.18), 0 0 50px rgba(79, 70, 229, 0.25);
+}
+
+[data-theme='light'] .portrait-caption {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='light'] .portrait-role {
+  color: #6d28d9;
+}
+
+[data-theme='light'] .hero-badge {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(79, 70, 229, 0.25);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12), 0 0 20px rgba(79, 70, 229, 0.12);
+}
+
+/* ---------- Cards: About, Skills, Contact ---------- */
+[data-theme='light'] .about-text,
+[data-theme='light'] .skills-container,
+[data-theme='light'] .stat-item,
+[data-theme='light'] .skill-card,
+[data-theme='light'] .expertise-card,
+[data-theme='light'] .tech-stack-summary,
+[data-theme='light'] .contact-form,
+[data-theme='light'] .contact-item {
+  background: #ffffff;
+  border-color: rgba(79, 70, 229, 0.14);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme='light'] .stat-item:hover,
+[data-theme='light'] .skill-card:hover,
+[data-theme='light'] .expertise-card:hover,
+[data-theme='light'] .contact-item:hover {
+  background: #ffffff;
+  border-color: rgba(79, 70, 229, 0.4);
+  box-shadow: 0 15px 40px rgba(79, 70, 229, 0.15);
+}
+
+[data-theme='light'] .expertise-card.featured {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(124, 58, 237, 0.08), transparent 55%),
+    #ffffff;
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+[data-theme='light'] .expertise-tag {
+  color: #334155;
+  background: rgba(79, 70, 229, 0.05);
+  border-color: rgba(79, 70, 229, 0.18);
+}
+
+[data-theme='light'] .expertise-tag:hover {
+  color: #0f172a;
+  background: rgba(79, 70, 229, 0.1);
+}
+
+[data-theme='light'] .category-icon {
+  color: #6d28d9;
+  background: rgba(79, 70, 229, 0.1);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+[data-theme='light'] .tech-text-logo {
+  color: #4338ca;
+}
+
+[data-theme='light'] .familiar-badge {
+  color: #b45309;
+  background: rgba(217, 119, 6, 0.1);
+  border-color: rgba(217, 119, 6, 0.35);
+}
+
+[data-theme='light'] .level-hands-on {
+  background: #10b981;
+}
+
+/* ---------- Experience ---------- */
+[data-theme='light'] .timeline-content {
+  background: #ffffff;
+  border-color: rgba(79, 70, 229, 0.15);
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme='light'] .timeline-content:hover {
+  box-shadow: 0 20px 50px rgba(79, 70, 229, 0.18);
+}
+
+[data-theme='light'] .timeline-dot {
+  animation-name: timeline-pulse-light;
+  box-shadow:
+    0 0 0 4px var(--dark-bg),
+    0 0 0 8px rgba(102, 126, 234, 0.3),
+    0 0 30px rgba(102, 126, 234, 0.4);
+}
+
+@keyframes timeline-pulse-light {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px #f8fafc, 0 0 0 8px rgba(102, 126, 234, 0.3), 0 0 30px rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px #f8fafc, 0 0 0 12px rgba(102, 126, 234, 0.45), 0 0 40px rgba(102, 126, 234, 0.6);
+  }
+}
+
+[data-theme='light'] .company { color: #475569; }
+[data-theme='light'] .location { color: #94a3b8; }
+[data-theme='light'] .period { color: #334155; }
+[data-theme='light'] .type { color: #64748b; }
+[data-theme='light'] .description { color: #475569; }
+[data-theme='light'] .achievements h4,
+[data-theme='light'] .technologies strong { color: #0f172a; }
+[data-theme='light'] .achievements li { color: #475569; }
+
+/* ---------- Projects ---------- */
+[data-theme='light'] .project-card {
+  background: linear-gradient(145deg, #ffffff, #f5f3ff);
+  border-color: rgba(79, 70, 229, 0.14);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme='light'] .project-card:hover {
+  box-shadow: 0 25px 50px rgba(79, 70, 229, 0.18);
+}
+
+[data-theme='light'] .project-info h3 {
+  background: linear-gradient(135deg, #0f172a, #334155);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-theme='light'] .project-info .project-tagline {
+  color: #6d28d9;
+}
+
+/* Generated covers: soft lavender with indigo type */
+[data-theme='light'] .project-cover {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.22), transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(79, 70, 229, 0.18), transparent 50%),
+    linear-gradient(rgba(79, 70, 229, 0.08) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(79, 70, 229, 0.08) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(145deg, #e0e7ff, #f5f3ff);
+}
+
+[data-theme='light'] .project-cover-title {
+  color: #1e1b4b;
+}
+
+[data-theme='light'] .project-cover-tagline {
+  color: #6d28d9;
+}
+
+/* ---------- Contact ---------- */
+[data-theme='light'] .form-group input,
+[data-theme='light'] .form-group textarea {
+  background: #f8fafc;
+  border-color: rgba(79, 70, 229, 0.18);
+}
+
+[data-theme='light'] .form-group input:focus,
+[data-theme='light'] .form-group textarea:focus {
+  background: #ffffff;
+}
+
+[data-theme='light'] .submit-message.success { color: #059669; }
+[data-theme='light'] .submit-message.error { color: #dc2626; }
+
+/* Experience: current role + grade */
+[data-theme='light'] .timeline-content.current {
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+[data-theme='light'] .type.type-current {
+  color: #047857;
+}
+
+[data-theme='light'] .grade-badge {
+  color: #b45309;
+  background: rgba(217, 119, 6, 0.1);
+}
+
+[data-theme='light'] .hero-status {
+  color: #047857;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+[data-theme='light'] .project-status {
+  color: #1e1b4b;
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(79, 70, 229, 0.2);
+}
+
+/* ---------- Resume ---------- */
+[data-theme='light'] .resume-preview {
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(79, 70, 229, 0.2), 0 0 40px rgba(79, 70, 229, 0.15);
+}
+
+[data-theme='light'] .resume-role { color: #6d28d9; }
+
+[data-theme='light'] .resume-facts li {
+  background: #ffffff;
+  border-color: rgba(79, 70, 229, 0.14);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+[data-theme='light'] .resume-fact-icon {
+  color: #6d28d9;
+  background: rgba(79, 70, 229, 0.1);
+}

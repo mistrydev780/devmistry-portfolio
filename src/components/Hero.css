@@ -136,29 +136,78 @@
 }
 
 .hero-subtitle {
-  font-size: 2rem;
-  color: var(--text-secondary);
+  font-family: 'Caveat', cursive;
+  font-size: 2.4rem;
   font-weight: 600;
+  line-height: 1.3;
+  min-height: 1.3em;
   margin-bottom: 25px;
+  text-align: left;
+  background: none;
   animation: slide-in-left 0.8s ease-out 0.4s both;
-  overflow: hidden;
-  border-right: 3px solid var(--primary-color);
+}
+
+/* Rotating role, "handwritten" left to right behind a glowing pen tip */
+.role {
+  position: relative;
+  display: inline-block;
+}
+
+.role-text {
+  display: inline-block;
   white-space: nowrap;
-  letter-spacing: 0.5px;
-  animation: 
-    slide-in-left 0.8s ease-out 0.4s both,
-    typing 3.5s steps(40, end) 1s both,
-    blink-caret 0.75s step-end infinite 1s;
+  padding-right: 0.15em;
+  background: linear-gradient(90deg, #e2e8f0 0%, #a5b4fc 55%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: role-write 4s cubic-bezier(0.65, 0, 0.35, 1) both;
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+.role-pen {
+  position: absolute;
+  top: 18%;
+  bottom: 12%;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #e0e7ff, var(--secondary-color));
+  box-shadow: 0 0 12px 2px rgba(139, 92, 246, 0.8);
+  animation: role-pen 4s cubic-bezier(0.65, 0, 0.35, 1) both;
 }
 
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: var(--primary-color); }
+.role-static .role-text {
+  white-space: normal;
+  animation: none;
+}
+
+@keyframes role-write {
+  0% {
+    clip-path: inset(-25% 100% -25% -5%);
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  38% {
+    clip-path: inset(-25% -5% -25% -5%);
+  }
+  85% {
+    clip-path: inset(-25% -5% -25% -5%);
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  100% {
+    clip-path: inset(-25% -5% -25% -5%);
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes role-pen {
+  0% { left: 0; opacity: 1; }
+  38% { left: 100%; opacity: 1; }
+  48%, 100% { left: 100%; opacity: 0; }
 }
 
 .hero-description {
@@ -169,6 +218,80 @@
   animation: slide-in-left 0.8s ease-out 0.6s both;
   position: relative;
   padding-left: 20px;
+}
+
+.hero-description p + p {
+  margin-top: 12px;
+}
+
+.hero-headline {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+/* Focus area pills under the rotating role */
+.hero-focus {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+  animation: slide-in-left 0.8s ease-out 0.5s both;
+}
+
+.hero-focus li {
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #c7d2fe;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.hero-focus li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.25);
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Initials shown in the portrait frame until a photo is added */
+.hero-monogram {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(139, 92, 246, 0.35), transparent 60%),
+    linear-gradient(145deg, #1e1b4b 0%, var(--dark-bg) 100%);
+  box-shadow:
+    inset 0 0 60px rgba(99, 102, 241, 0.35),
+    0 25px 50px rgba(99, 102, 241, 0.4);
+  animation: image-appear 1s ease-out 0.5s both;
+}
+
+.hero-monogram span {
+  font-size: 8rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #e0e7ff, var(--primary-color), #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
 }
 
 .hero-description::before {
@@ -184,9 +307,14 @@
 
 .hero-buttons {
   display: flex;
-  gap: 20px;
+  gap: 14px;
   flex-wrap: wrap;
   animation: slide-in-left 0.8s ease-out 0.8s both;
+}
+
+/* Same height as the bordered outline buttons */
+.hero-buttons .btn:not(.btn-outline) {
+  border: 2px solid transparent;
 }
 
 .hero-buttons .btn {
@@ -282,8 +410,8 @@
   border-radius: 50%;
   object-fit: cover;
   filter: drop-shadow(0 25px 50px rgba(99, 102, 241, 0.4));
-  border: 5px solid var(--bg-primary);
-  background: var(--bg-primary);
+  border: 5px solid var(--dark-bg);
+  background: var(--dark-bg);
   animation: image-appear 1s ease-out 0.5s both;
   display: block;
   position: relative;
@@ -365,6 +493,7 @@
   z-index: 1;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .scroll-indicator:hover {
@@ -484,10 +613,16 @@
   }
 
   .hero-subtitle {
-    font-size: 1.8rem;
-    white-space: normal;
-    border-right: none;
-    animation: slide-in-left 0.8s ease-out 0.4s both;
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .hero-focus {
+    justify-content: center;
+  }
+
+  .hero-monogram span {
+    font-size: 6.5rem;
   }
 
   .hero-description::before {
@@ -536,7 +671,15 @@
   }
 
   .hero-subtitle {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
+  }
+
+  .hero-headline {
+    font-size: 1.15rem;
+  }
+
+  .hero-monogram span {
+    font-size: 5.5rem;
   }
 
   .hero-description {
@@ -569,6 +712,7 @@
   .greeting::before,
   .name,
   .image-placeholder,
+  .hero-monogram,
   .image-placeholder::before,
   .image-placeholder::after,
   .wheel,
@@ -576,8 +720,315 @@
   .orbit {
     animation: none !important;
   }
+}
+/* Stacked mobile layout: the pinned scroll cue would sit on top of the portrait */
+@media (max-width: 968px) {
+  .scroll-indicator {
+    display: none;
+  }
+}
 
-  .hero-subtitle {
-    border-right: none;
+/* ===== Full-photo portrait card ===== */
+@property --portrait-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.hero-image {
+  transform-style: preserve-3d;
+}
+
+.image-placeholder.portrait {
+  width: 360px;
+  height: 480px;
+  transform-style: preserve-3d;
+}
+
+/* Soft glow behind the card */
+.image-placeholder.portrait::before {
+  inset: -30px;
+  border-radius: 40px;
+}
+
+/* Rotating light around the card edge */
+.image-placeholder.portrait::after {
+  inset: -3px;
+  border-radius: 31px;
+  background: conic-gradient(
+    from var(--portrait-angle),
+    var(--primary-color),
+    #a855f7,
+    rgba(99, 102, 241, 0.15) 30%,
+    rgba(99, 102, 241, 0.15) 55%,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  animation: portrait-spin 6s linear infinite;
+}
+
+@keyframes portrait-spin {
+  to { --portrait-angle: 360deg; }
+}
+
+.portrait .orbit:nth-child(n) {
+  animation-name: orbit-portrait;
+}
+
+@keyframes orbit-portrait {
+  0% { transform: rotate(0deg) translateX(260px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(260px) rotate(-360deg); }
+}
+
+.portrait-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--dark-bg);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(99, 102, 241, 0.35);
+  animation: image-appear 1s ease-out 0.5s both;
+}
+
+/* Fade into the caption for readability */
+.portrait-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(15, 23, 42, 0.85) 100%);
+  pointer-events: none;
+}
+
+.image-placeholder.portrait .portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  border: none;
+  border-radius: 0;
+  filter: none;
+  animation: none;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portrait-frame:hover img {
+  transform: scale(1.05);
+}
+
+/* Light sweep across the photo */
+.portrait-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.16) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: portrait-shine 7s ease-in-out 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes portrait-shine {
+  0% { transform: translateX(-120%); }
+  25%, 100% { transform: translateX(120%); }
+}
+
+.portrait-caption {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 18px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+}
+
+.portrait-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.portrait-role {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #c4b5fd;
+}
+
+/* Floating glass tech badges */
+.hero-badge {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-primary);
+  background: rgba(30, 41, 59, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 20px rgba(99, 102, 241, 0.2);
+  animation:
+    badge-in 0.8s ease-out both,
+    badge-float 5s ease-in-out infinite;
+}
+
+.image-placeholder .hero-badge img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  background: none;
+  filter: none;
+  animation: none;
+}
+
+.hero-badge-1 {
+  top: 12%;
+  left: -70px;
+  animation-delay: 1s, 1.8s;
+}
+
+.hero-badge-2 {
+  top: 46%;
+  right: -80px;
+  animation-delay: 1.2s, 3.3s;
+}
+
+.hero-badge-3 {
+  bottom: 20%;
+  left: -60px;
+  animation-delay: 1.4s, 4.8s;
+}
+
+@keyframes badge-in {
+  from { opacity: 0; transform: translateZ(50px) translateY(20px) scale(0.85); }
+  to { opacity: 1; transform: translateZ(50px) translateY(0) scale(1); }
+}
+
+@keyframes badge-float {
+  0%, 100% { transform: translateZ(50px) translateY(0); }
+  50% { transform: translateZ(50px) translateY(-12px); }
+}
+
+@media (max-width: 968px) {
+  .image-placeholder.portrait {
+    width: 300px;
+    height: 400px;
+  }
+
+  .hero-badge-1 { left: -50px; }
+  .hero-badge-2 { right: -50px; }
+  .hero-badge-3 { left: -40px; }
+}
+
+@media (max-width: 480px) {
+  .image-placeholder.portrait {
+    width: 260px;
+    height: 347px;
+  }
+
+  .hero-badge {
+    padding: 7px 12px;
+    font-size: 0.75rem;
+  }
+
+  .image-placeholder .hero-badge img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-badge-1 { left: -24px; }
+  .hero-badge-2 { right: -24px; }
+  .hero-badge-3 { left: -20px; }
+
+  .portrait-name { font-size: 1rem; }
+}
+
+.portrait-caption {
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .portrait-caption {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 10px 14px;
+  }
+
+  .portrait-role {
+    font-size: 0.72rem;
+  }
+
+  /* Keep the third badge clear of the caption */
+  .hero-badge-3 {
+    bottom: auto;
+    top: 60%;
+  }
+}
+
+@media (max-width: 968px) {
+  .hero-badge-3 {
+    bottom: auto;
+    top: 58%;
+  }
+}
+
+/* Current role chip above the greeting */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 7px 16px 7px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  animation: slide-in-left 0.8s ease-out both;
+}
+
+.hero-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  animation: status-pulse 2s ease-out infinite;
+}
+
+@keyframes status-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+/* Greeting sits on its own line below the chip */
+.hero-status + .greeting {
+  display: block;
+  width: fit-content;
+}
+
+@media (max-width: 968px) {
+  .hero-status + .greeting {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

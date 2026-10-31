@@ -64,7 +64,7 @@
   width: 50%;
   padding: 30px 50px;
   box-sizing: border-box;
-  animation: fadeInUp 0.8s ease-out backwards;
+  animation: timeline-fade-up 0.8s ease-out backwards;
 }
 
 .timeline-item:nth-child(1) { animation-delay: 0.1s; }
@@ -94,7 +94,7 @@
     0 0 0 8px rgba(102, 126, 234, 0.3),
     0 0 30px rgba(102, 126, 234, 0.6);
   z-index: 2;
-  animation: pulse 2s ease-in-out infinite;
+  animation: timeline-pulse 2s ease-in-out infinite;
 }
 
 .timeline-item.left .timeline-dot {
@@ -106,7 +106,7 @@
 }
 
 /* Pulse Animation for Dots */
-@keyframes pulse {
+@keyframes timeline-pulse {
   0%, 100% {
     transform: scale(1);
     box-shadow: 
@@ -337,7 +337,7 @@
   }
 }
 
-@keyframes fadeInUp {
+@keyframes timeline-fade-up {
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -413,5 +413,144 @@
   .tech-tag {
     font-size: 0.8rem;
     padding: 6px 12px;
+  }
+}
+/* Second timeline heading */
+.experience h2.education-heading {
+  margin-top: 60px;
+  scroll-margin-top: 100px;
+}
+
+.experience-title-section h3 {
+  line-height: 1.35;
+}
+
+/* Cards without body content (education) shouldn't keep header spacing */
+.timeline-content > .experience-header:last-child {
+  margin-bottom: 0;
+}
+
+/* Period + type pills sit side by side */
+.experience-meta {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ===== Header layout: organisation badge + title, pills underneath ===== */
+.experience-header {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.experience-title-section h3 {
+  margin-bottom: 6px;
+}
+
+.experience-meta {
+  margin-bottom: 18px;
+}
+
+.org-badge {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.35);
+}
+
+.org-badge-long {
+  font-size: 0.78rem;
+}
+
+/* Current role / current studies */
+.timeline-content.current {
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+.type.type-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+  animation: live-pulse 2s ease-out infinite;
+}
+
+@keyframes live-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+.grade-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fcd34d;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 20px;
+}
+
+.experience .tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.experience .tech-tag img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .experience-header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .org-badge {
+    width: 44px;
+    height: 44px;
+    font-size: 0.9rem;
+  }
+
+  .org-badge-long {
+    font-size: 0.68rem;
+  }
+}
+
+/* Narrow phones: badge above the title so long degree names keep their width */
+@media (max-width: 480px) {
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }

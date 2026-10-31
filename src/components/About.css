@@ -51,6 +51,40 @@
   width: 100%;
 }
 
+.skills {
+  list-style: none;
+}
+
+.focus-item {
+  position: relative;
+  padding-left: 22px;
+}
+
+.focus-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+}
+
+.focus-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.focus-detail {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 .skill-header {
   display: flex;
   justify-content: space-between;

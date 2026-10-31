@@ -1,0 +1,210 @@
+.resume-content {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Paper-style preview of page 1 */
+.resume-preview {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  background: white;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(99, 102, 241, 0.35),
+    0 0 50px rgba(99, 102, 241, 0.25);
+  transform: perspective(1000px) rotateY(8deg) rotateX(2deg);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease;
+}
+
+.resume-preview:hover,
+.resume-preview:focus-visible {
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-8px);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(139, 92, 246, 0.6),
+    0 0 70px rgba(139, 92, 246, 0.4);
+}
+
+/* Soft fade at the bottom suggests more content */
+.resume-preview::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 35%;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.95));
+  pointer-events: none;
+}
+
+.resume-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.resume-preview-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: resume-shine 6s ease-in-out 1.5s infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes resume-shine {
+  0% { transform: translateX(-120%); }
+  25%, 100% { transform: translateX(120%); }
+}
+
+.resume-preview-badge {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.45);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* Details */
+.resume-info h3 {
+  font-size: 2rem;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.resume-role {
+  font-weight: 600;
+  color: #c4b5fd;
+  margin-bottom: 16px;
+}
+
+.resume-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 26px;
+}
+
+.resume-facts {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.resume-facts li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.resume-facts li:hover {
+  border-color: rgba(99, 102, 241, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.18);
+}
+
+.resume-fact-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c4b5fd;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+  border-radius: 10px;
+}
+
+.resume-fact-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.resume-fact-value {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.resume-actions .btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resume-updated {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .resume-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .resume-preview {
+    max-width: 300px;
+    margin: 0 auto;
+    transform: none;
+  }
+
+  .resume-facts li {
+    text-align: left;
+  }
+
+  .resume-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .resume-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

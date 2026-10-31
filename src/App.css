@@ -12,6 +12,32 @@
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
   --accent: #f59e0b;
+  color-scheme: dark;
+}
+
+/* Light theme palette; component-level overrides live in theme-light.css */
+[data-theme='light'] {
+  --primary-color: #4f46e5;
+  --secondary-color: #7c3aed;
+  --dark-bg: #f8fafc;
+  --light-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent: #d97706;
+  color-scheme: light;
+}
+
+/* Smooth colour change while switching themes (class added briefly by ThemeToggle) */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    fill 0.45s ease !important;
 }
 
 body {
@@ -34,7 +60,8 @@ body {
   height: 100vh;
   z-index: 0;
   opacity: 0.3;
-  pointer-events: auto;
+  /* The canvas listens on #root (eventSource), so it never blocks clicks */
+  pointer-events: none;
 }
 
 /* Ensure all sections have relative positioning and z-index above background */
@@ -46,6 +73,66 @@ section {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Keep anchored sections clear of the fixed header */
+section[id] {
+  scroll-margin-top: 70px;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* Accessibility helpers */
+:focus-visible {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  z-index: 2000;
+  padding: 10px 18px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 8px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Section styling */

@@ -26,3 +26,5 @@ yarn-error.log*
 
 # Misc
 .DS_Store
+# Local resume copies (the site serves public/resume/Dev-Mistry-Resume.pdf)
+/*.pdf
