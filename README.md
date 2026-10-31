@@ -6,7 +6,7 @@
 
 <br>
 
-<a href="https://my-portfolio-gamma-roan-37.vercel.app/">
+<a href="https://devmistry780.vercel.app/">
   <img src="https://img.shields.io/badge/%E2%9A%A1%20LIVE%20DEMO-00BFFF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
 </a>
 &nbsp;
