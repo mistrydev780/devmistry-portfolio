@@ -20,22 +20,7 @@ function Resume() {
       <h2>My Resume</h2>
       <p className="section-subtitle">Experience, skills, projects and education in one page-ready document</p>
 
-      <div className="resume-content">
-        <a
-          href={resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="resume-preview"
-          aria-label={`Open ${profile.name}'s resume (PDF) in a new tab`}
-        >
-          <img src={asset(profile.resumePreview)} alt="" width="320" height="417" loading="lazy" />
-          <span className="resume-preview-shine" aria-hidden="true"></span>
-          <span className="resume-preview-badge" aria-hidden="true">
-            <LineIcon name="external" size={14} />
-            PDF · 2 pages
-          </span>
-        </a>
-
+      <div className="resume-content resume-content-single">
         <div className="resume-info">
           <h3>{profile.name}</h3>
           <p className="resume-role">{profile.title}</p>

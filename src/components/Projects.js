@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Projects.css';
-import { asset, logoClass, projects, socialLinks, techLogoSrc, technologies } from '../data/portfolio';
+import { asset, projects, socialLinks, technologies } from '../data/portfolio';
 import { GitHubIcon, LineIcon } from './Icons';
 
 const INITIAL_COUNT = 6;
@@ -12,10 +12,10 @@ const CATEGORY_ICONS = {
 };
 
 const STATUS = {
-  live: { label: 'Live', note: null },
-  source: { label: 'Source Code', note: 'Live demo is offline; the full source code is on GitHub.' },
-  private: { label: 'Private', note: 'Professional project in a private repository.' },
-  development: { label: 'In Development', note: 'Actively in development; follow progress on GitHub.' },
+  live: { label: 'Live' },
+  source: { label: 'Source Code' },
+  private: { label: 'Private' },
+  development: { label: 'In Development' },
 };
 
 function ProjectCover({ project }) {
@@ -126,6 +126,18 @@ function Projects() {
                           <LineIcon name="external" size={22} />
                         </a>
                       )}
+                      {project.admin && (
+                        <a
+                          href={project.admin}
+                          className="project-link admin-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View ${project.title} admin panel`}
+                          title="View Admin Panel"
+                        >
+                          <LineIcon name="grid" size={22} />
+                        </a>
+                      )}
                     </div>
                   ) : (
                     <span className="project-links project-overlay-label">{status.label} Project</span>
@@ -135,48 +147,39 @@ function Projects() {
 
               <div className="project-info">
                 <h3>{project.title}</h3>
-                <p className="project-tagline">{project.tagline}</p>
-                <p>{project.description}</p>
+                <p className="project-description" title={project.description}>{project.description}</p>
 
-                <h4 className="project-features-title">Key Features</h4>
-                <ul className="project-features">
-                  {project.features.map((feature) => (
-                    <li key={feature}>{feature}</li>
+                <ul className="technologies" aria-label="Technologies">
+                  {project.tech.map((id) => (
+                    <li key={id} className="tech-tag">
+                      {technologies[id].name}
+                    </li>
                   ))}
                 </ul>
 
-                <ul className="technologies" aria-label="Technologies">
-                  {project.tech.map((id) => {
-                    const src = techLogoSrc(id);
-                    return (
-                      <li key={id} className="tech-tag">
-                        {src && (
-                          <img src={src} alt="" className={logoClass(id)} width="16" height="16" loading="lazy" />
-                        )}
-                        {technologies[id].name}
-                      </li>
-                    );
-                  })}
-                </ul>
-
+                {/* Touch screens have no hover overlay, so links appear here instead */}
                 {hasLinks && (
-                  <div className="project-actions">
+                  <div className="project-touch-links">
                     {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-action primary">
-                        <LineIcon name="external" size={16} />
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                        <LineIcon name="external" size={15} />
                         Live Demo
                       </a>
                     )}
+                    {project.admin && (
+                      <a href={project.admin} target="_blank" rel="noopener noreferrer">
+                        <LineIcon name="grid" size={15} />
+                        Admin
+                      </a>
+                    )}
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-action">
-                        <GitHubIcon size={16} />
-                        Source Code
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <GitHubIcon size={15} />
+                        GitHub
                       </a>
                     )}
                   </div>
                 )}
-
-                {status.note && <p className="project-links-note">{status.note}</p>}
               </div>
             </article>
           );

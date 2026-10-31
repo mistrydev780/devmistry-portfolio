@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './About.css';
 import { about, expertise, projects, totalExperienceMonths } from '../data/portfolio';
 
 function About() {
+  const skillsRef = useRef(null);
+  const [skillsVisible, setSkillsVisible] = useState(false);
+
+  // Fill the skill bars the first time the card scrolls into view
+  useEffect(() => {
+    const node = skillsRef.current;
+    if (!node || !('IntersectionObserver' in window)) {
+      setSkillsVisible(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSkillsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   const months = totalExperienceMonths();
   const stats = [
     {
@@ -25,13 +48,31 @@ function About() {
           ))}
         </div>
 
-        <div className="skills-container">
-          <h3>Core Focus</h3>
+        <div ref={skillsRef} className={`skills-container ${skillsVisible ? 'is-visible' : ''}`}>
+          <h3>My Skills</h3>
           <ul className="skills">
-            {about.focus.map((focus) => (
-              <li key={focus.name} className="skill focus-item">
-                <span className="focus-name">{focus.name}</span>
-                <p className="focus-detail">{focus.detail}</p>
+            {about.skills.map((skill, index) => (
+              <li key={skill.name} className="skill">
+                <div className="skill-header">
+                  <span className="skill-title">{skill.name}</span>
+                  <span className="skill-percentage">{skill.level}</span>
+                </div>
+                <div
+                  className="skill-bar"
+                  role="progressbar"
+                  aria-label={`${skill.name}: ${skill.level}`}
+                  aria-valuenow={skill.value}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <div
+                    className="skill-progress"
+                    style={{
+                      width: skillsVisible ? `${skill.value}%` : 0,
+                      transitionDelay: `${index * 0.08}s`,
+                    }}
+                  ></div>
+                </div>
               </li>
             ))}
           </ul>

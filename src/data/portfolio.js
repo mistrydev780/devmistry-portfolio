@@ -28,7 +28,6 @@ export const profile = {
     { tech: 'n8n', label: 'Automation' },
   ],
   resume: '/resume/Dev-Mistry-Resume.pdf', // generated from resume/resume.html with `npm run resume`
-  resumePreview: '/resume/resume-preview.webp',
   resumeUpdated: 'October 2026',
 };
 
@@ -48,6 +47,16 @@ export const navLinks = [
 ];
 
 export const about = {
+  // "My Skills" bars in About. value = bar fill; label shown instead of a made-up percentage.
+  skills: [
+    { name: 'React.js & Next.js', level: 'Advanced', value: 90 },
+    { name: 'Node.js & Express.js', level: 'Advanced', value: 88 },
+    { name: 'REST APIs & JWT Auth', level: 'Advanced', value: 88 },
+    { name: 'MongoDB & PostgreSQL', level: 'Proficient', value: 82 },
+    { name: 'AI & LLM Integration', level: 'Proficient', value: 80 },
+    { name: 'n8n & AI Automation', level: 'Proficient', value: 76 },
+    { name: 'React Native & Expo', level: 'Intermediate', value: 68 },
+  ],
   paragraphs: [
     'I am Dev Mistry, a developer focused on Full Stack Web Development, Mobile Application Development and Artificial Intelligence.',
     'My technical interests include building scalable applications, designing backend architectures, developing cross-platform mobile apps and integrating intelligent AI solutions using modern LLM technologies.',
@@ -414,7 +423,7 @@ export const projects = [
     tagline: 'AI-Powered Shopping Platform',
     category: 'Full Stack Web',
     icon: 'layers',
-    status: 'source',
+    status: 'live',
     description:
       'A full-stack MERN e-commerce platform with a shopping experience, admin dashboard, Razorpay payments and AI-powered product recommendations.',
     features: [
@@ -426,31 +435,32 @@ export const projects = [
       'JWT authentication',
     ],
     tech: ['react', 'redux', 'tailwindcss', 'nodejs', 'express', 'mongodb', 'razorpay', 'jwt'],
-    image: null,
+    image: '/images/projects/ecommerce.webp',
     github: repo('Ai-MERN-Dev-E-Commerce-Master'),
-    demo: '',
+    demo: 'https://ai-mern-dev-e-commerce-master.vercel.app',
+    admin: 'https://ai-mern-dev-e-commerce-master-5u47.vercel.app',
   },
   {
-    id: 'taskflow',
-    title: 'TaskFlow',
-    tagline: 'Employee Task Management Platform',
-    category: 'Full Stack Web',
-    icon: 'grid',
-    status: 'live',
+    id: 'devnova-ai',
+    title: 'DevNova AI',
+    tagline: 'Custom AI Voice Agent',
+    category: 'AI Applications',
+    icon: 'cpu',
+    status: 'development',
     description:
-      'A MERN workforce productivity platform for assigning tasks, tracking deadlines and monitoring team workflow through employee and admin dashboards.',
+      'An AI voice agent application in active development, with a React and Vite frontend and an Express and MongoDB backend secured with JWT authentication.',
     features: [
-      'Task assignment workflow',
-      'Task status & deadline tracking',
-      'Employee management',
-      'Productivity monitoring',
-      'Admin & employee dashboards',
-      'Secure JWT authentication',
+      'AI voice agent experience',
+      'React + Vite frontend',
+      'Firebase integration',
+      'JWT cookie authentication',
+      'Express REST backend',
+      'MongoDB data layer',
     ],
-    tech: ['react', 'tailwindcss', 'nodejs', 'express', 'mongodb', 'jwt'],
-    image: '/images/projects/taskflow.webp',
-    github: repo('TaskFlow-Management-Platform'),
-    demo: 'https://employee-task-management-system-1-jolj.onrender.com/',
+    tech: ['react', 'vite', 'tailwindcss', 'firebase', 'nodejs', 'express', 'mongodb', 'jwt'],
+    image: '/images/projects/devnova.webp',
+    github: repo('DevNova-AI'),
+    demo: '',
   },
   {
     id: 'employee-management',
@@ -492,7 +502,7 @@ export const projects = [
       'Document handling',
     ],
     tech: ['nextjs', 'typescript', 'prisma', 'postgresql', 'nextauth'],
-    image: null,
+    image: '/images/projects/firecheck.webp',
     github: '',
     demo: '',
   },
@@ -537,28 +547,6 @@ export const projects = [
     tech: ['n8n', 'aimodels', 'gmail', 'googlesheets', 'telegram'],
     image: null,
     github: '',
-    demo: '',
-  },
-  {
-    id: 'devnova-ai',
-    title: 'DevNova AI',
-    tagline: 'AI Voice Agent',
-    category: 'AI Applications',
-    icon: 'cpu',
-    status: 'development',
-    description:
-      'An AI voice agent application in active development, with a React and Vite frontend and an Express and MongoDB backend secured with JWT authentication.',
-    features: [
-      'AI voice agent experience',
-      'React + Vite frontend',
-      'Firebase integration',
-      'JWT cookie authentication',
-      'Express REST backend',
-      'MongoDB data layer',
-    ],
-    tech: ['react', 'vite', 'tailwindcss', 'firebase', 'nodejs', 'express', 'mongodb', 'jwt'],
-    image: null,
-    github: repo('DevNova-AI'),
     demo: '',
   },
   {

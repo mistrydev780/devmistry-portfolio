@@ -561,3 +561,73 @@
   height: auto;
   aspect-ratio: 16 / 10;
 }
+
+/* ===== Compact reference-style cards ===== */
+.projects-grid {
+  align-items: stretch;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 26px 26px;
+}
+
+.project-info h3 {
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+
+/* Three-line summary keeps every card the same height */
+.project-info .project-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.project-card .technologies {
+  margin-top: auto;
+  padding-top: 0;
+  border-top: none;
+  gap: 8px;
+}
+
+.project-card .tech-tag {
+  padding: 6px 13px;
+  font-size: 0.78rem;
+}
+
+.project-touch-links {
+  display: none;
+}
+
+@media (hover: none) {
+  .project-touch-links {
+    display: flex;
+    gap: 18px;
+    margin-top: 16px;
+  }
+
+  .project-touch-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+}
+
+/* Chips sit right under the description, consistent spacing on every card */
+.project-card .technologies {
+  margin-top: 0;
+}

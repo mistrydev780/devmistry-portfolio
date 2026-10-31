@@ -200,3 +200,42 @@
     font-size: 2rem;
   }
 }
+/* ===== "My Skills" bars (fill when the card scrolls into view) ===== */
+.skills-container .skills {
+  gap: 20px;
+}
+
+.skill-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.skill-percentage {
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+}
+
+.skills-container .skill-progress {
+  position: relative;
+  overflow: hidden;
+  animation: none;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light sweep across each filled bar */
+.skills-container .skill-progress::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: translateX(-100%);
+}
+
+.skills-container.is-visible .skill-progress::after {
+  animation: skill-sweep 2.6s ease-in-out 1.3s infinite;
+}
+
+@keyframes skill-sweep {
+  0% { transform: translateX(-100%); }
+  45%, 100% { transform: translateX(100%); }
+}
