@@ -29,8 +29,8 @@ function About() {
   const months = totalExperienceMonths();
   const stats = [
     {
-      value: months >= 12 ? `${Math.floor(months / 12)}+ Years` : `${months}+ Months`,
-      label: 'Professional Experience',
+      value: months >= 12 ? `${Math.floor(months / 12)}+` : `${months}+`,
+      label: months >= 12 ? 'Years of Experience' : 'Months of Experience',
     },
     { value: 'First Class', label: 'BCA Distinction' },
     { value: projects.length, label: 'Featured Projects' },

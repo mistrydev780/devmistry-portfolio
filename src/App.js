@@ -9,13 +9,18 @@ import Projects from './components/Projects';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-// Last, so light-theme overrides win over component styles
+import BackToTop from './components/BackToTop';
+import useScrollReveal from './hooks/useScrollReveal';
+// Last, so the finishing layer and light-theme overrides win over component styles
+import './polish.css';
 import './theme-light.css';
 
 // Three.js is loaded in its own chunk so it doesn't delay the first paint
 const Antigravity = lazy(() => import('./components/Antigravity'));
 
 function App() {
+  useScrollReveal();
+
   return (
     <div className="App">
       <a className="skip-link" href="#main">
@@ -46,6 +51,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

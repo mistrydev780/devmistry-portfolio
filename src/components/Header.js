@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 import { navLinks, profile } from '../data/portfolio';
 import ThemeToggle from './ThemeToggle';
@@ -7,14 +7,27 @@ function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
+  const progressRef = useRef(null);
 
   useEffect(() => {
+    let frame = 0;
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      // Scroll progress bar, written to the DOM so scrolling doesn't re-render
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = max > 0 ? window.scrollY / max : 0;
+        if (progressRef.current) progressRef.current.style.transform = `scaleX(${progress})`;
+      });
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Highlight the nav link for the section currently in view
@@ -77,8 +90,8 @@ function Header() {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-content">
         <div className="logo">
-          <a href="#home" aria-label={`${profile.name}, back to top`}>
-            {profile.name}
+          <a href="#home" aria-label={`${profile.name} portfolio, back to top`}>
+            Portfolio
           </a>
         </div>
 
@@ -117,6 +130,7 @@ function Header() {
           </button>
         </div>
       </div>
+      <div ref={progressRef} className="scroll-progress" aria-hidden="true"></div>
     </header>
   );
 }
