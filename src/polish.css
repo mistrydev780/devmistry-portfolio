@@ -163,3 +163,86 @@ html {
     transform: none;
   }
 }
+
+/* =====================================================================
+ * Responsive refinements (layout only; visual design unchanged)
+ * ===================================================================== */
+
+/* Laptops 969–1340px: the fixed side rail would cover page content, so it
+   becomes a horizontal row at the bottom-left of the hero instead */
+@media (min-width: 969px) and (max-width: 1340px) {
+  .hero-social {
+    position: absolute;
+    top: auto;
+    left: 40px;
+    bottom: 40px;
+    transform: none;
+    flex-direction: row;
+  }
+}
+
+/* Stats: 2 × 2 until there is room for four cards on one line */
+@media (max-width: 1100px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Phones & tablets: the scroll indicator is hidden here, so drop its extra space */
+@media (max-width: 968px) {
+  .hero {
+    padding-bottom: 50px;
+  }
+}
+
+/* Orbit dots stay on screen around the smaller portrait */
+@keyframes orbit-portrait-sm {
+  0% { transform: rotate(0deg) translateX(175px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(175px) rotate(-360deg); }
+}
+
+@media (max-width: 600px) {
+  .portrait .orbit:nth-child(n) {
+    animation-name: orbit-portrait-sm;
+  }
+}
+
+/* Tablets: two project cards per row instead of one oversized card */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  }
+}
+
+/* Touch screens & small viewports: comfortable tap targets (~40px) */
+@media (hover: none), (max-width: 768px) {
+  .project-touch-links a,
+  .footer-cta,
+  .contact-item p a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  .footer-section ul li a {
+    display: inline-block;
+    padding: 8px 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 4px;
+  }
+}
+
+/* Keep the smallest labels readable */
+@media (max-width: 480px) {
+  .familiar-badge {
+    font-size: 0.625rem;
+  }
+}

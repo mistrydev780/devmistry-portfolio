@@ -5,7 +5,7 @@
   justify-content: center; /* Center everything */
   gap: 60px;
   padding-top: 100px;
-  padding-bottom: 140px; /* room for the scroll indicator below the buttons */
+  padding-bottom: 175px; /* room for the scroll indicator below the buttons */
   padding-left: 40px;
   padding-right: 40px;
   position: relative;
